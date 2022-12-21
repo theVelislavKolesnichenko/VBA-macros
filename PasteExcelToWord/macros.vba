@@ -29,7 +29,7 @@ Sub Paste()
 
   Set objExcel = CreateObject("Excel.Application")
 
-  Set exWb = objExcel.Workbooks.Open("D:\OneDrive - tu-varna.bg\BasicProgramming\2022_2023\СДР\Students.xlsx")
+        Set exWb = objExcel.Workbooks.Open("Excel File")
 
   Dim i As Integer
 
