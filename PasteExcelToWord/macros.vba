@@ -29,18 +29,22 @@ Sub Paste()
 
   Set objExcel = CreateObject("Excel.Application")
 
-        Set exWb = objExcel.Workbooks.Open("Excel File")
+        Set exWb = objExcel.Workbooks.Open("C:\Users\Kolesnichenko\Desktop\SDR\Students.xlsx")
 
   Dim i As Integer
+  Dim j As Integer
+  j = 1
 
-  For i = 1 To 40
-      Selection.GoTo wdGoToPage, wdGoToAbsolute, i
-
+  For i = 1 To 21
+              
     If i Mod 21 = 0 Then
         setStartPage (i)
+        j = 1
     End If
 
-
+      Selection.GoTo wdGoToPage, wdGoToAbsolute, j
+      Selection.Paragraphs(1).Range.Delete
+    
       Selection.Font.Bold = True
       Selection.Font.Underline = True
       Selection.ParagraphFormat.SpaceAfter = 0
@@ -48,7 +52,15 @@ Sub Paste()
       Selection.TypeText Text:=exWb.Sheets("Sheet1").Cells(i, 2) & " " & exWb.Sheets("Sheet1").Cells(i, 3)
       Selection.TypeText Text:=MyText
       Selection.InsertParagraph
+      
+      
+      
+      ActiveDocument.ExportAsFixedFormat OutputFileName:= _
+            ("C:\Users\Kolesnichenko\Desktop\SDR\" & exWb.Sheets("Sheet1").Cells(i, 2) & ".pdf"), _
+            ExportFormat:=wdExportFormatPDF, _
+            Range:=wdExportFromTo, From:=j, To:=j
 
+    j = j + 1
   Next i
 
 
