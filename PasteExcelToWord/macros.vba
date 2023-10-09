@@ -29,13 +29,13 @@ Sub Paste()
 
   Set objExcel = CreateObject("Excel.Application")
 
-        Set exWb = objExcel.Workbooks.Open("C:\Users\Kolesnichenko\Desktop\SDR\Students.xlsx")
+        Set exWb = objExcel.Workbooks.Open("Excel file path")
 
   Dim i As Integer
   Dim j As Integer
   j = 1
 
-  For i = 1 To 21
+  For i = 1 To 347
               
     If i Mod 21 = 0 Then
         setStartPage (i)
@@ -56,7 +56,7 @@ Sub Paste()
       
       
       ActiveDocument.ExportAsFixedFormat OutputFileName:= _
-            ("C:\Users\Kolesnichenko\Desktop\SDR\" & exWb.Sheets("Sheet1").Cells(i, 2) & ".pdf"), _
+            ("path to save files\" & exWb.Sheets("Sheet1").Cells(i, 2) & ".pdf"), _
             ExportFormat:=wdExportFormatPDF, _
             Range:=wdExportFromTo, From:=j, To:=j
 
